@@ -6,6 +6,14 @@ var taskFormHandler = function (event) {
   var taskNameInput = document.querySelector("input[name='task-name']").value;
   var taskTypeInput = document.querySelector("select[name='task-type']").value;
 
+  // check if input values are empty strings
+  if (!taskNameInput || !taskTypeInput) {
+    alert("You need to fill out the task form before 'Add Task' is pressed");
+    return false;
+  }
+
+  formEl.reset(); // this is unnecessary on my chrome version 95.0.4638.54
+
   // packagee up data as an object
   var taskDataObj = {
     name: taskNameInput,
