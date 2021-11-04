@@ -78,7 +78,6 @@ var createTaskEl = function (taskDataObj) {
   taskIdCounter++;
 
   saveTasks();
-  return taskIdCounter - 1; // return the unique id for the created task
 };
 
 var createTaskActions = function (taskId) {
@@ -161,8 +160,8 @@ var taskButtonHandler = function (event) {
 
 var taskStatusChangeHandler = function (event) {
   // find task list item based on event.target's data-task-id attribute
-  taskId = event.target.getAttribute("data-task-id");
-  statusValue = event.target.value.toLowerCase();
+  var taskId = event.target.getAttribute("data-task-id");
+  var statusValue = event.target.value.toLowerCase();
   var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
 
   // convert value to lower case
@@ -212,8 +211,6 @@ var deleteTask = function (taskId) {
   // find task list element with taskId value and remove it
   var taskSelected = document.querySelector(".task-item[data-task-id='" + taskId + "']");
   taskSelected.remove();
-
-  //tasks = tasks.filter((item) => item.id !== taskId);
 
   // create new array to hold updated list of tasks
   var updatedTaskArr = [];
